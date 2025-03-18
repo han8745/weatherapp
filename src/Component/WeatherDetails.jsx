@@ -1,8 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 function WeatherDetails(){
-
 const location =useLocation();
 const weather = location.state?.weather;
+
 
 return(
 <>

@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
+
 function App(){
-  const apikey="ca6f96bcfee67fd0ad80ddf1d1c3e7b5"
-  const defaultcity="Kuala Lumpur"
+  
+const apikey =import.meta.env.VITE_API_KEY
+   const defaultcity="Kuala Lumpur"
   const [city,setCity]=useState(defaultcity)
   const [weather, setWeather]=useState(null)
   const [searchCity, setSearchCity] = useState(""); 
@@ -19,6 +21,8 @@ function App(){
 
 useEffect(
 ()=>{
+
+
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`)
 .then(res => res.json())
 .then(data=>
@@ -26,6 +30,8 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}
 
 .catch(error=>console.error("Error:",error));
 },[city]);
+
+
 return(
   <> 
 <div className="relative bg-[url('/Mypic/caption.jpg')] bg-cover bg-center w-full h-screen">
@@ -54,6 +60,7 @@ setCity(searchCity)
       <p>Temp ：{weather.main.temp}°C</p>
       <p> Min_temp: {weather.main.temp_min}°C</p>
       <p>wethaer_id: {weather.id}</p>
+      <p>{import.meta.env.REACT_APP_API_KEY}</p>
     </div>
   </>
 ) : (
